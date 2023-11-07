@@ -1,0 +1,14 @@
+{
+  "name": "tab",
+  "version": "0.0.1",
+  "description": "tab refresher",
+  "type": "module",
+  "scripts": {
+    "dev": "tsc --watch background.ts"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.250",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  }
+}
