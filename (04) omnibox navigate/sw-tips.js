@@ -22,7 +22,7 @@ const ALARM_NAME = "tip";
 async function createAlarm() {
   const alarm = await chrome.alarms.get(ALARM_NAME);
   if (!alarm) {
-    chrome.alarm.create({
+    chrome.alarms.create({
       delayInMinutes: 1,
       periodInMinutes: 1440,
     });
@@ -34,3 +34,11 @@ createAlarm();
 
 // Update tip once a day
 chrome.alarms.onAlarm.addListener(updateTip);
+
+// Send tip to content script via messaging
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message.greeting === "tip") {
+    chrome.storage.local.get("tip").then(sendResponse);
+    return true;
+  }
+});
