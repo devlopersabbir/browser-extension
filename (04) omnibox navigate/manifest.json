@@ -16,5 +16,11 @@
   "minimum_chrome_version": "102",
   "omnibox": {
     "keyword": "api"
-  }
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://developer.chrome.com/docs/extensions/reference/*"],
+      "js": ["content.js"]
+    }
+  ]
 }
